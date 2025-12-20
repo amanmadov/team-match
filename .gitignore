@@ -1,0 +1,19 @@
+# Mac files
+.DS_Store
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+pnpm-debug.log
+lerna-debug.log
+.pnp/
+
+# Build output
+dist/
+build/
+out/
+
+# Prompt files
+# PROMPT.md
