@@ -7,14 +7,14 @@ function PlayerToken({ name, team, number, isDragging }) {
   
   return (
     <div className={`flex flex-col items-center ${isDragging ? 'opacity-50' : ''}`}>
-      <div className={`${bgColor} rounded-lg shadow-2xl relative w-14 h-16 flex items-center justify-center cursor-move`}>
+      <div className={`${bgColor} rounded-lg shadow-2xl relative w-10 h-12 md:w-14 md:h-16 flex items-center justify-center cursor-move`}>
         {/* Jersey shape */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-3 bg-inherit rounded-t-lg"></div>
-        <div className="absolute top-2 left-0 w-3 h-4 bg-inherit rounded-tl-lg"></div>
-        <div className="absolute top-2 right-0 w-3 h-4 bg-inherit rounded-tr-lg"></div>
-        <span className="text-white font-black text-xl z-10">{number}</span>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-7 h-2 md:w-10 md:h-3 bg-inherit rounded-t-lg"></div>
+        <div className="absolute top-1.5 md:top-2 left-0 w-2 h-3 md:w-3 md:h-4 bg-inherit rounded-tl-lg"></div>
+        <div className="absolute top-1.5 md:top-2 right-0 w-2 h-3 md:w-3 md:h-4 bg-inherit rounded-tr-lg"></div>
+        <span className="text-white font-black text-base md:text-xl z-10">{number}</span>
       </div>
-      <div className="mt-1 bg-black/70 px-2 py-0.5 rounded text-white text-xs font-semibold whitespace-nowrap pointer-events-none">
+      <div className="mt-1 bg-black/70 px-1.5 md:px-2 py-0.5 rounded text-white text-[10px] md:text-xs font-semibold whitespace-nowrap pointer-events-none">
         {name}
       </div>
     </div>
@@ -138,7 +138,7 @@ function Field({ lineup }) {
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <div className="relative w-full h-[700px] bg-gradient-to-b from-[#4a7c59] via-[#3d6b4a] to-[#4a7c59] rounded-2xl shadow-2xl overflow-hidden border-4 border-white/90">
+      <div className="relative w-full min-h-[700px] h-auto md:h-[700px] bg-gradient-to-b from-[#4a7c59] via-[#3d6b4a] to-[#4a7c59] rounded-2xl shadow-2xl overflow-hidden border-4 border-white/90">
         {/* Horizontal stripe pattern */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(14)].map((_, i) => (
@@ -152,25 +152,26 @@ function Field({ lineup }) {
           <div className="absolute inset-4 border-2 border-white/90 rounded"></div>
           
           {/* Center line */}
-          <div className="absolute left-1/2 top-4 bottom-4 w-0.5 bg-white/90 transform -translate-x-1/2"></div>
+          <div className="absolute left-1/2 top-4 bottom-4 w-0.5 bg-white/90 transform -translate-x-1/2 md:block hidden"></div>
+          <div className="absolute left-4 right-4 top-1/2 h-0.5 bg-white/90 transform -translate-y-1/2 md:hidden"></div>
           
           {/* Center circle */}
           <div className="absolute left-1/2 top-1/2 w-32 h-32 border-2 border-white/90 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute left-1/2 top-1/2 w-2 h-2 bg-white/90 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
           
           {/* Left goal and penalty area */}
-          <div className="absolute left-4 top-1/2 w-16 h-2 bg-white/90 rounded transform -translate-y-1/2"></div>
-          <div className="absolute left-4 top-1/2 w-0.5 h-12 bg-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute left-4 top-1/2 w-20 h-40 border-2 border-l-0 border-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute left-4 top-1/2 w-12 h-24 border-2 border-l-0 border-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute left-20 top-1/2 w-2 h-2 bg-white/90 rounded-full transform -translate-y-1/2"></div>
+          <div className="absolute left-4 top-1/2 w-16 h-2 bg-white/90 rounded transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute left-4 top-1/2 w-0.5 h-12 bg-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute left-4 top-1/2 w-20 h-40 border-2 border-l-0 border-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute left-4 top-1/2 w-12 h-24 border-2 border-l-0 border-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute left-20 top-1/2 w-2 h-2 bg-white/90 rounded-full transform -translate-y-1/2 md:block hidden"></div>
           
           {/* Right goal and penalty area */}
-          <div className="absolute right-4 top-1/2 w-16 h-2 bg-white/90 rounded transform -translate-y-1/2"></div>
-          <div className="absolute right-4 top-1/2 w-0.5 h-12 bg-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute right-4 top-1/2 w-20 h-40 border-2 border-r-0 border-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute right-4 top-1/2 w-12 h-24 border-2 border-r-0 border-white/90 transform -translate-y-1/2"></div>
-          <div className="absolute right-20 top-1/2 w-2 h-2 bg-white/90 rounded-full transform -translate-y-1/2"></div>
+          <div className="absolute right-4 top-1/2 w-16 h-2 bg-white/90 rounded transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute right-4 top-1/2 w-0.5 h-12 bg-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute right-4 top-1/2 w-20 h-40 border-2 border-r-0 border-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute right-4 top-1/2 w-12 h-24 border-2 border-r-0 border-white/90 transform -translate-y-1/2 md:block hidden"></div>
+          <div className="absolute right-20 top-1/2 w-2 h-2 bg-white/90 rounded-full transform -translate-y-1/2 md:block hidden"></div>
           
           {/* Corner arcs */}
           <div className="absolute left-4 top-4 w-4 h-4 border-2 border-t-0 border-l-0 border-white/90 rounded-br-full"></div>
@@ -180,18 +181,18 @@ function Field({ lineup }) {
         </div>
 
         {/* Teams */}
-        <div className="relative z-10 h-full flex">
+        <div className="relative z-10 h-full flex flex-col md:flex-row">
           {/* Team A - Left Side */}
           <FieldDropZone team="A">
-            <div className="flex-1 flex flex-row justify-between py-8 px-8">
-              <div className="absolute top-8 left-8">
-                <div className="bg-blue-700/90 backdrop-blur-sm px-6 py-2 rounded-xl border-2 border-blue-400 shadow-lg">
-                  <h3 className="text-xl font-black text-white uppercase tracking-wider">Team A</h3>
+            <div className="flex-1 flex flex-row justify-between py-4 md:py-8 px-4 md:px-8 min-h-[300px] md:min-h-0">
+              <div className="absolute top-4 md:top-8 left-4 md:left-8">
+                <div className="bg-blue-700/90 backdrop-blur-sm px-3 md:px-6 py-1 md:py-2 rounded-xl border-2 border-blue-400 shadow-lg">
+                  <h3 className="text-sm md:text-xl font-black text-white uppercase tracking-wider">Team A</h3>
                 </div>
               </div>
               
               {/* Goalkeeper */}
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center gap-2 md:gap-0">
                 {formationA.gk.map((player, idx) => (
                   <DraggablePlayer 
                     key={player.id} 
@@ -205,7 +206,7 @@ function Field({ lineup }) {
               
               {/* Defenders */}
               {formationA.def.length > 0 && (
-                <div className="flex flex-col justify-center gap-6">
+                <div className="flex flex-col justify-center gap-3 md:gap-6">
                   {formationA.def.map((player, idx) => (
                     <DraggablePlayer 
                       key={player.id} 
@@ -220,7 +221,7 @@ function Field({ lineup }) {
               
               {/* Midfielders */}
               {formationA.mid.length > 0 && (
-                <div className="flex flex-col justify-center gap-8">
+                <div className="flex flex-col justify-center gap-4 md:gap-8">
                   {formationA.mid.map((player, idx) => (
                     <DraggablePlayer 
                       key={player.id} 
@@ -234,7 +235,7 @@ function Field({ lineup }) {
               )}
               
               {/* Forwards */}
-              <div className="flex flex-col justify-center gap-8">
+              <div className="flex flex-col justify-center gap-4 md:gap-8">
                 {formationA.fwd.map((player, idx) => (
                   <DraggablePlayer 
                     key={player.id} 
@@ -250,15 +251,15 @@ function Field({ lineup }) {
 
           {/* Team B - Right Side */}
           <FieldDropZone team="B">
-            <div className="flex-1 flex flex-row-reverse justify-between py-8 px-8">
-              <div className="absolute top-8 right-8">
-                <div className="bg-red-700/90 backdrop-blur-sm px-6 py-2 rounded-xl border-2 border-red-400 shadow-lg">
-                  <h3 className="text-xl font-black text-white uppercase tracking-wider">Team B</h3>
+            <div className="flex-1 flex flex-row-reverse justify-between py-4 md:py-8 px-4 md:px-8 min-h-[300px] md:min-h-0">
+              <div className="absolute top-4 md:top-8 right-4 md:right-8">
+                <div className="bg-red-700/90 backdrop-blur-sm px-3 md:px-6 py-1 md:py-2 rounded-xl border-2 border-red-400 shadow-lg">
+                  <h3 className="text-sm md:text-xl font-black text-white uppercase tracking-wider">Team B</h3>
                 </div>
               </div>
               
               {/* Goalkeeper */}
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center gap-2 md:gap-0">
                 {formationB.gk.map((player, idx) => (
                   <DraggablePlayer 
                     key={player.id} 
@@ -272,7 +273,7 @@ function Field({ lineup }) {
               
               {/* Defenders */}
               {formationB.def.length > 0 && (
-                <div className="flex flex-col justify-center gap-6">
+                <div className="flex flex-col justify-center gap-3 md:gap-6">
                   {formationB.def.map((player, idx) => (
                     <DraggablePlayer 
                       key={player.id} 
@@ -287,7 +288,7 @@ function Field({ lineup }) {
               
               {/* Midfielders */}
               {formationB.mid.length > 0 && (
-                <div className="flex flex-col justify-center gap-8">
+                <div className="flex flex-col justify-center gap-4 md:gap-8">
                   {formationB.mid.map((player, idx) => (
                     <DraggablePlayer 
                       key={player.id} 
@@ -301,7 +302,7 @@ function Field({ lineup }) {
               )}
               
               {/* Forwards */}
-              <div className="flex flex-col justify-center gap-8">
+              <div className="flex flex-col justify-center gap-4 md:gap-8">
                 {formationB.fwd.map((player, idx) => (
                   <DraggablePlayer 
                     key={player.id} 
