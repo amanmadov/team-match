@@ -8,14 +8,15 @@ import { generateTeamVariations, canGenerateTeams } from './utils/teamGenerator'
 // Initial placeholder data
 const initialPlayers = [
 	'Serdar T',
+	'Serdar A',
 	'Dowlet S',
-	'Muhammetnazar',
+	'Yhlas R',
 	'Meylis aga',
 	'Hasan',
 	'Kuwwat',
 	'Shahriyar aga',
 	'Dowran',
-	'Mekan myhman',
+	'Mekan aga',
 	'Dowlet aga',
 	'Nowruz',
 	'Yagmyr aga',
@@ -24,7 +25,16 @@ const initialPlayers = [
 	'Maksat aga',
 	'Agamyrat aga',
 	'Nury aga',
-	'Yakup'
+	'Yakup',
+	'Muhammetnazar',
+	'Hally',
+	'Suleyman',
+	'Yhlas',
+	'Dayanch',
+	'Ahmet S',
+	'Akmuhammet A',
+	'Abray',
+	'Mekan DZ'
 ];
 
 function App() {
