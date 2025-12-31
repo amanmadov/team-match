@@ -17,13 +17,12 @@ function shuffleArray(array) {
 
 /**
  * Generates a single team split
- * IMPORTANT: Paired players are ALWAYS on opposite teams for balance
- * @param {Array} singles - Array of single player objects
+ * IMPORTANT: Only uses paired players. Unpaired players are excluded from lineups.
+ * Paired players are ALWAYS on opposite teams for balance.
  * @param {Array} pairs - Array of pair objects (each pair has player1 and player2)
  * @returns {Object} - { teamA: [], teamB: [] }
  */
-function generateSingleLineup(singles, pairs) {
-	const shuffledSingles = shuffleArray(singles);
+function generateSingleLineup(pairs) {
 	const shuffledPairs = shuffleArray(pairs);
 
 	const teamA = [];
@@ -41,29 +40,6 @@ function generateSingleLineup(singles, pairs) {
 		}
 	});
 
-	// Distribute singles alternately
-	shuffledSingles.forEach((player, index) => {
-		if (index % 2 === 0) {
-			teamA.push(player);
-		} else {
-			teamB.push(player);
-		}
-	});
-
-	// Balance teams if needed (in case of odd number of singles)
-	const diff = teamA.length - teamB.length;
-	if (diff > 1) {
-		const moveCount = Math.floor(diff / 2);
-		for (let i = 0; i < moveCount; i++) {
-			teamB.push(teamA.pop());
-		}
-	} else if (diff < -1) {
-		const moveCount = Math.floor(Math.abs(diff) / 2);
-		for (let i = 0; i < moveCount; i++) {
-			teamA.push(teamB.pop());
-		}
-	}
-
 	return { teamA, teamB };
 }
 
@@ -78,13 +54,13 @@ function createLineupSignature(lineup) {
 
 /**
  * Generates multiple unique team variations
- * @param {Array} singles - Array of single player objects { id, name }
+ * Only uses paired players - unpaired players are excluded from lineups
  * @param {Array} pairs - Array of pair objects { id, player1, player2 }
  * @param {number} count - Number of variations to generate (default 5)
  * @returns {Array} - Array of lineup objects
  */
-export function generateTeamVariations(singles, pairs, count = 5) {
-	if (singles.length === 0 && pairs.length === 0) {
+export function generateTeamVariations(pairs, count = 5) {
+	if (pairs.length === 0) {
 		return [];
 	}
 
@@ -95,7 +71,7 @@ export function generateTeamVariations(singles, pairs, count = 5) {
 
 	while (variations.length < count && attempts < maxAttempts) {
 		attempts++;
-		const lineup = generateSingleLineup(singles, pairs);
+		const lineup = generateSingleLineup(pairs);
 		const signature = createLineupSignature(lineup);
 
 		if (!signatures.has(signature)) {
@@ -109,8 +85,9 @@ export function generateTeamVariations(singles, pairs, count = 5) {
 
 /**
  * Validates if there are enough players to form teams
+ * Only paired players count
  */
-export function canGenerateTeams(singles, pairs) {
-	const totalPlayers = singles.length + (pairs.length * 2);
+export function canGenerateTeams(pairs) {
+	const totalPlayers = pairs.length * 2;
 	return totalPlayers >= 2;
 }

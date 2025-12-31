@@ -92,14 +92,12 @@ function App() {
 
 	// Generate team lineups
 	const handleGenerateLineups = () => {
-		const availablePlayers = getAvailablePlayers();
-
-		if (!canGenerateTeams(availablePlayers, pairs)) {
-			alert('Please add at least 2 players to generate teams.');
+		if (!canGenerateTeams(pairs)) {
+			alert('Please create at least 1 pair to generate teams.');
 			return;
 		}
 
-		const newVariations = generateTeamVariations(availablePlayers, pairs, 5);
+		const newVariations = generateTeamVariations(pairs, 5);
 		setVariations(newVariations);
 
 		// Scroll to results
@@ -121,7 +119,7 @@ function App() {
 						PitchPerfect Team Generator
 					</h1>
 					<p className="text-gray-300 mt-3 text-lg">
-						Create balanced soccer teams with skill-based pairing (paired players always on opposite teams)
+						Create balanced soccer teams with skill-based pairing (only paired players in lineups)
 					</p>
 				</div>
 			</header>
@@ -137,11 +135,11 @@ function App() {
 					<div className="bg-uefa-blue-light/80 backdrop-blur-sm rounded-xl p-6 border border-uefa-cyan/20 shadow-xl hover:border-uefa-cyan/40 transition-all">
 						<div className="text-gray-400 text-sm font-semibold uppercase tracking-wider">Balanced Pairs</div>
 						<div className="text-4xl font-bold text-uefa-cyan mt-2">{pairs.length}</div>
-						<div className="text-xs text-gray-400 mt-1">Always opposite teams</div>
+						<div className="text-xs text-gray-400 mt-1">Only paired players in lineups</div>
 					</div>
 					<div className="bg-uefa-blue-light/80 backdrop-blur-sm rounded-xl p-6 border border-uefa-cyan/20 shadow-xl hover:border-uefa-cyan/40 transition-all">
-						<div className="text-gray-400 text-sm font-semibold uppercase tracking-wider">Available Players</div>
-						<div className="text-4xl font-bold text-uefa-teal mt-2">{availablePlayers.length}</div>
+						<div className="text-gray-400 text-sm font-semibold uppercase tracking-wider">Players in Lineups</div>
+						<div className="text-4xl font-bold text-uefa-teal mt-2">{pairs.length * 2}</div>
 					</div>
 				</div>
 
@@ -165,15 +163,15 @@ function App() {
 				<div className="text-center mb-10">
 					<button
 						onClick={handleGenerateLineups}
-						disabled={totalPlayers < 2}
+						disabled={pairs.length === 0}
 						className="px-10 py-5 bg-gradient-to-r from-uefa-cyan to-uefa-teal hover:from-uefa-teal hover:to-uefa-cyan disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold text-xl rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 flex items-center gap-4 mx-auto uppercase tracking-wide"
 					>
 						<Shuffle className="w-7 h-7" />
 						Generate Lineups
 					</button>
-					{totalPlayers < 2 && (
+					{pairs.length === 0 && (
 						<p className="text-gray-400 text-sm mt-3">
-							Add at least 2 players to generate lineups
+							Create at least 1 pair to generate lineups
 						</p>
 					)}
 				</div>
