@@ -65,7 +65,6 @@ npm run build
 - **State Management**: React Hooks (useState)
 
 ## 📁 Project Structure
-
 ```
 team-match/
 ├── src/
@@ -78,6 +77,8 @@ team-match/
 │   ├── App.jsx                  # Main application component
 │   ├── main.jsx                 # Entry point
 │   └── index.css                # Global styles
+├── docs/
+│   └── README.md                # Documentation
 ├── index.html
 ├── package.json
 ├── vite.config.js
