@@ -2,7 +2,7 @@
 
 **Role:** Act as a Senior Frontend Engineer and UX Designer specializing in interactive sports applications.
 
-**Objective:** specific code to build a single-page React application named "PitchPerfect Team Generator." The app will be deployed to GitHub Pages. It allows users to input soccer player names, drag and drop them to create "duos" (locked pairs), and then generates 5 different "Team A vs. Team B" lineup variations displayed on a visual soccer field.
+**Objective:** Build a single-page React application named "PitchPerfect Team Generator." The app will be deployed to GitHub Pages. It allows users to input soccer player names, drag and drop them to create "duos" (locked pairs), and then generates 5 different "Team A vs. Team B" lineup variations displayed on a visual soccer field.
 
 **Tech Stack:**
 

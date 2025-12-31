@@ -1,6 +1,6 @@
 # PitchPerfect Team Generator ⚽
 
-A modern, interactive React application for generating balanced soccer team lineups with support for locked player pairs. Built with React, Tailwind CSS, and drag-and-drop functionality.
+A modern, interactive React application for generating balanced soccer team lineups with support for locked player pairs.
 
 ## 🌟 Features
 
@@ -46,33 +46,7 @@ To create a production build:
 npm run build
 ```
 
-The build output will be in the `dist` directory.
-
-## 🌐 Deployment to GitHub Pages
-
-1. Make sure your repository is set up on GitHub
-
-2. Update the `homepage` field in `package.json` if needed:
-```json
-"homepage": "https://yourusername.github.io/team-match"
-```
-
-3. Update the `base` path in `vite.config.js` if needed:
-```javascript
-base: '/team-match/'
-```
-
-4. Deploy to GitHub Pages:
-```bash
-npm run deploy
-```
-
-This will build the app and push it to the `gh-pages` branch.
-
-5. Enable GitHub Pages in your repository settings:
-   - Go to Settings → Pages
-   - Select `gh-pages` branch as the source
-   - Your app will be live at `https://yourusername.github.io/team-match`
+> Note: The build output will be in the `dist` directory.
 
 ## 🎮 How to Use
 
